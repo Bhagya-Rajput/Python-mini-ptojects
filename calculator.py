@@ -21,13 +21,20 @@ try :
                 Result += a**b 
             case _:
                 print("entered ivalid operator")
-        if type(Result) == float:
+        if isinstance(Result,float):
           print(f"your result is:{Result:.2f}")
         else :
           print(f"your result is:{Result}")
 
-        retaken = input("if you want to continue enter { Yes }/{ New operation }/{ Quit }").capitalize()
-        condition = True if retaken =="Yes" else False
+        retaken = input("if you want to continue enter { Yes -> =}/{ New operation ->C}/{ Quit }").capitalize()
+        if(retaken == "Yes"):
+         condition = retaken == "="
+         a = Result
+        elif(retaken == "C"): 
+         Result = 0
+        else:
+         break
+
 
 except ValueError:
     print("You enterd wrong Input")
