@@ -14,20 +14,24 @@ while True:
         Task = []
          
      match(choice):
-       case 1 :
+       case 1 : ## for adding a task
          task = input("Enter the task you want to add: ")
          Task.append(task)
          print(f"task is added to file")
 
-       case 2:
+       case 2: ## for view of all task
          for i,task in enumerate(Task,start =1):
           print(f"{i}.{task}")
-       case 3 :
+
+       case 3 :## for removing a existing task
          for i,task in enumerate(Task,start =1):
           print(f"{i}.{task}")
          try:
            n =int(input("enter the number of above task to remove:"))
-           Task.pop(n-1)
+           if (n <= len(Task)+1):
+            Task.pop(n-1)
+           else:
+             print("Invalid Task from menu")
          except ValueError as e:
             print("you have enterd some wrong input",e)
        case 4:
