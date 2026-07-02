@@ -23,9 +23,7 @@ while True:
          if not Task:
            print("no task in file")
          for i,task in enumerate(Task,start =1):
-          print(f"{i}.{task}")
-          
-
+  
        case 3 :## for removing a existing task
          for i,task in enumerate(Task,start =1):
           print(f"{i}.{task}")
