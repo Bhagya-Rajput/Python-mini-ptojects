@@ -1,3 +1,4 @@
+import json
 while True:
     try:
      choice = int(input('''
@@ -5,12 +6,14 @@ while True:
           1. Add Task
           2. View Tasks
           3. Remove Task
-          4. Exit  '''))
+          4. task status
+          5. Exit  '''))
      try:
-      with open("Text.txt","r") as file:
-       Task = [line.strip() for line in file]
-     except FileNotFoundError:
-       with open("Text.txt","w") as file:
+      with open("Text.json","r") as file:
+       Task = json.load(file)
+      
+     except json.JSONDecodeError:
+       with open("Text.json","w") as file:
         Task = []
          
      match(choice):
