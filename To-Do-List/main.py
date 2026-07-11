@@ -12,14 +12,18 @@ while True:
       with open("Text.json","r") as file:
        Task = json.load(file)
       
-     except json.JSONDecodeError:
+     except( FileNotFoundError, json.JSONDecodeError):
        with open("Text.json","w") as file:
         Task = []
-         
+     print(type(Task)) 
+     print(Task)
      match(choice):
        case 1 : ## for adding a task
          task = input("Enter the task you want to add: ")
-         Task.append(task)
+         Task.append({
+           "task" : task,
+           "status" : False
+         })
          print(f"task is added to file")
 
        case 2: ## for view of all task
@@ -42,7 +46,7 @@ while True:
          break
        case _:
          print("Enter wrong Input Try again")
-     with open("Text.txt","w") as file:
-          file.writelines(line + "\n" for line in Task)
+     with open("Text.json","w") as file:
+          json.dump(Task,file,indent=4)
     except ValueError as e:
       print("you have enterd some wrong input",e)
