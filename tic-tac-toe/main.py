@@ -1,8 +1,8 @@
-class board():
+class Game():
    def __init__(self):
      self.lst =[0,1,2,3,4,5,6,7,8]
      self.player = "X"
-      
+     self.combinations = [ (0,3,6) , (1,4,7) , (2,5,8) , (0,1,2) , (3,4,5) , (6,7,8) , (0,4,8) , (2,4,6) ]
    def boards(self):
       for i in range(3):
          for j,k in zip(range(3),self.lst[i*3:(i+1)*3]):
@@ -23,4 +23,11 @@ class board():
             print("Enter the position from board")
       except ValueError as e:
          print("you Enterd some wrong input",e)
-      
+   def check_winner(self):
+       for i in self.combinations :
+        a,b,c = i
+       if self.lst[a] == self.lst[b] == self.lst[c] and self.lst[a] in( "X" or "O") :
+            print(f"{self.lst[a]} Wins!!!!!!!")
+            return True
+       else :
+            return False
