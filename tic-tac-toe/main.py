@@ -16,7 +16,7 @@ class Game():
          position = int(input(f"enter the desire position for {self.player} :"))
          if(1<= position<=9):
             index = position - 1
-            if (self.lst[index] != "X" and self.lst[index] != "O"):
+            if self.lst[index] not in ("X", "O"):
              self.lst[index]= self.player  
              return True
             else:
@@ -36,8 +36,6 @@ class Game():
                   return True
          return False
    def draw(self):
-      
-      if self.result == False :
          for item in self.lst:
             if isinstance(item,int):
                return False
