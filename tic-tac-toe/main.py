@@ -18,14 +18,16 @@ class Game():
             index = position - 1
             if (self.lst[index] != "X" and self.lst[index] != "O"):
              self.lst[index]= self.player  
-             return False
+             return True
             else:
              print("You enterd wrong position ")
-             return True
-         else :
-            print("Enter the position from board")
+             return False
+         else:
+            print("Enter the position from the")
+            return False
       except ValueError as e:
          print("you Enterd some wrong input",e)
+         return False
    def check_winner(self):
          for i in self.combinations :
             a,b,c = i
@@ -51,10 +53,9 @@ while True:
    while True:
      right_position = game.Input()
      if right_position:
-        continue
-     else:
         break
-
+     else:
+        continue
    game.result = game.check_winner()
    if game.result:
       break
