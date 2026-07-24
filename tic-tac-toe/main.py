@@ -44,24 +44,29 @@ class Game():
         
          
 game = Game()
-
 while True:
-
-   game.boards()
-   while True:
-     right_position = game.Input()
-     if right_position:
-        break
-     else:
-        continue
-   game.result = game.check_winner()
-   if game.result:
-      break
-   else:
-      result2 = game.draw()
-      if result2 == False:
-        game.player = "O" if game.player == "X" else "X"
+      while True:
+         game.boards()
+         while True:
+          valid_position = game.Input()
+          if valid_position:
+            break
+          else:
+            continue
+         game.result = game.check_winner()
+         if game.result:
+            break
+         else:
+            result2 = game.draw()
+            if result2 == False:
+              game.player = "O" if game.player == "X" else "X"
+            else:
+              print("THE Game is Drawn")
+              break
+      game.boards()
+      n = input("enter if you want to play game again{y/n}").lower().strip()
+      if(n=="y"):
+         game = Game()
+         continue
       else:
-        print("THE Game is Drawn")
-        break
-game.boards()
+         break
