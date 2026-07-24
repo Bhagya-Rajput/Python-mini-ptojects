@@ -12,7 +12,7 @@ class Game():
    def Input(self):
 
       try:
-         position = int(input("enter the desire position for X :"))
+         position = int(input(f"enter the desire position for {self.player} :"))
          if(1<= position<=9):
             index = position - 1
             if (self.lst[index] != "X" and self.lst[index] != "O"):
@@ -26,8 +26,9 @@ class Game():
    def check_winner(self):
          for i in self.combinations :
             a,b,c = i
-            if self.lst[a] == self.lst[b] == self.lst[c] and self.lst[a] in( "X" or "O") :
+            if self.lst[a] == self.lst[b] == self.lst[c] and self.lst[a] in [ "X", "O"] :
                   print(f"{self.lst[a]} Wins!!!!!!!")
+                  self.boards()
                   return True
          return False
    def draw(self):
@@ -35,7 +36,13 @@ class Game():
       if not result :
          for item in self.lst:
             if isinstance(item,int):
-               return True
-         return False
-            
+               return False
+         print("THE Game is Drawn")
+         self.boards()
+         return True
+      
+   def player_turns(self):
+         result2 = self.draw()
+         if  result2 :
+            self.player = "O" if self.player == "X" else "X"
    
