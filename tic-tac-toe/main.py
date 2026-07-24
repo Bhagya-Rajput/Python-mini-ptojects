@@ -17,7 +17,7 @@ class Game():
          if(1<= position<=9):
             index = position - 1
             if (self.lst[index] != "X" and self.lst[index] != "O"):
-             self.lst[index]="X" if self.player  else self.lst[index]="O"
+             self.lst[index]= self.player  
              return False
             else:
              print("You enterd wrong position ")
@@ -64,4 +64,5 @@ while True:
         game.player = "O" if game.player == "X" else "X"
       else:
         print("THE Game is Drawn")
+        break
 game.boards()
