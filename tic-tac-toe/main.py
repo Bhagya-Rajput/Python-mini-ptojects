@@ -26,7 +26,7 @@ class Game():
    def check_winner(self):
          for i in self.combinations :
             a,b,c = i
-            if self.lst[a] == self.lst[b] == self.lst[c] and self.lst[a] in [ "X", "O"] :
+            if self.lst[a] == self.lst[b] == self.lst[c] and self.lst[a] in ("X", "O") :
                   print(f"{self.lst[a]} Wins!!!!!!!")
                   self.boards()
                   return True
