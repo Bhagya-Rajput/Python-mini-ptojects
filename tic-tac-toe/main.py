@@ -3,6 +3,7 @@ class Game():
      self.lst =[0,1,2,3,4,5,6,7,8]
      self.player = "X"
      self.combinations = [ (0,3,6) , (1,4,7) , (2,5,8) , (0,1,2) , (3,4,5) , (6,7,8) , (0,4,8) , (2,4,6) ]
+     self.result = None
    def boards(self):
       for i in range(3):
          for j,k in zip(range(3),self.lst[i*3:(i+1)*3]):
@@ -31,15 +32,28 @@ class Game():
                   return True
          return False
    def draw(self):
-      result = self.check_winner()
-      if not result :
+      
+      if self.result == False :
          for item in self.lst:
             if isinstance(item,int):
                return False
-         print("THE Game is Drawn")
          return True
-      
-   def player_turns(self):
-         result2 = self.draw()
-         if not result2 :
-            self.player = "O" if self.player == "X" else "X"
+       
+        
+         
+game = Game()
+
+while True:
+
+   game.boards()
+   game.Input()
+   game.result = game.check_winner()
+   if game.result:
+      break
+   else:
+      result2 = game.draw()
+      if result2 == False:
+        game.player = "O" if game.player == "X" else "X"
+      else:
+        print("THE Game is Drawn")
+game.boards()
