@@ -28,7 +28,6 @@ class Game():
             a,b,c = i
             if self.lst[a] == self.lst[b] == self.lst[c] and self.lst[a] in ("X", "O") :
                   print(f"{self.lst[a]} Wins!!!!!!!")
-                  self.boards()
                   return True
          return False
    def draw(self):
@@ -38,11 +37,9 @@ class Game():
             if isinstance(item,int):
                return False
          print("THE Game is Drawn")
-         self.boards()
          return True
       
    def player_turns(self):
          result2 = self.draw()
-         if  result2 :
+         if not result2 :
             self.player = "O" if self.player == "X" else "X"
-   
